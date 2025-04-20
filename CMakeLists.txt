@@ -25,9 +25,10 @@ add_library(hpmem STATIC ${HPMEM_SRC_DIR}/cpy.cpp)
 
 target_include_directories(hpmem PUBLIC $<BUILD_INTERFACE:${HPMEM_INCLUDE_DIR}>)
 
-target_compile_options(hpmem PRIVATE -O3)
-# target_compile_options( hpmem PRIVATE $<$<OR:$<CXX_COMPILER_ID:GNU>,
-# $<CXX_COMPILER_ID:Clang>>:-O3> $<$<CXX_COMPILER_ID:MSVC>:/O2>) vector support
+target_compile_options(
+  hpmem PRIVATE $<$<OR:$<CXX_COMPILER_ID:GNU>, $<CXX_COMPILER_ID:Clang>>:-O3>
+                $<$<CXX_COMPILER_ID:MSVC>:/O2>)
+# vector support
 include(CheckCXXSourceCompiles)
 include(CMakePushCheckState)
 
