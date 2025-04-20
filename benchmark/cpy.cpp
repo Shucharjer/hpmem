@@ -47,22 +47,22 @@ struct std_memcpy {
     BENCHMARK_TEMPLATE(BM_copy, builtin_memcpy)->Arg(_);                                           \
     BENCHMARK_TEMPLATE(BM_copy, std_memcpy)->Arg(_)
 
-// BENCH(1 << 0);
-// BENCH(1 << 1);
-// BENCH(1 << 2);
-// BENCH((1 << 2) + (1 << 1));
-// BENCH(1 << 3);
-// BENCH((1 << 3) + (1 << 1));
-// BENCH((1 << 3) + (1 << 2));
-// BENCH(1 << 4);
-// BENCH((1 << 4) + (1 << 1));
-// BENCH((1 << 4) + (1 << 2));
-// BENCH((1 << 4) + (1 << 3));
-// BENCH(1 << 5);
-// BENCH((1 << 5) + (1 << 1));
-// BENCH((1 << 5) + (1 << 2));
-// BENCH((1 << 5) + (1 << 3));
-// BENCH((1 << 5) + (1 << 4));
+BENCH(1 << 0);
+BENCH(1 << 1);
+BENCH(1 << 2);
+BENCH((1 << 2) + (1 << 1));
+BENCH(1 << 3);
+BENCH((1 << 3) + (1 << 1));
+BENCH((1 << 3) + (1 << 2));
+BENCH(1 << 4);
+BENCH((1 << 4) + (1 << 1));
+BENCH((1 << 4) + (1 << 2));
+BENCH((1 << 4) + (1 << 3));
+BENCH(1 << 5);
+BENCH((1 << 5) + (1 << 1));
+BENCH((1 << 5) + (1 << 2));
+BENCH((1 << 5) + (1 << 3));
+BENCH((1 << 5) + (1 << 4));
 BENCH(1 << 6);
 BENCH((1 << 6) + (1 << 1));
 BENCH((1 << 6) + (1 << 2));
