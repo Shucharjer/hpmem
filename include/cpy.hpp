@@ -1,3 +1,4 @@
+#pragma once
 #include <cstddef>
 #include <cstdint>
 #include <immintrin.h>
@@ -18,24 +19,27 @@ static inline void copy_in_128b(uint8_t* dst, const uint8_t* src, uint8_t length
     if (length <= 0x4) {
         switch (length) {
         case 4:
-            *(dst + 3) = *(dst + 3);
+            *(dst + 3) = *(src + 3);
         case 0x3:
-            *(dst + 2) = *(dst + 2);
+            *(dst + 2) = *(src + 2);
         case 0x2:
-            *(dst + 1) = *(dst + 1);
+            *(dst + 1) = *(src + 1);
         case 0x1:
             *dst = *src;
         default:
             break;
         }
+        return;
     }
     else if (length & 0x8) {
         *(uint64_t*)dst                  = *(uint64_t*)src;
         *(uint64_t*)(dst + length - 0x8) = *(uint64_t*)(src + length - 0x8);
+        return;
     }
     else {
         *(uint32_t*)dst                  = *(uint32_t*)src;
         *(uint32_t*)(dst + length - 0x4) = *(uint32_t*)(src + length - 0x4);
+        return;
     }
 }
 
@@ -113,8 +117,9 @@ inline void hpcpy(void* dst, const void* src, ptrdiff_t length) noexcept {
             }
         }
 #elif !defined(__SCE__) || defined(__SSE__)
-#else
 // TODO: SSE
+#else
+
 #endif
     }
 }
